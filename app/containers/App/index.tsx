@@ -12,7 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import { Grid } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 
 export default function App() {
   return (

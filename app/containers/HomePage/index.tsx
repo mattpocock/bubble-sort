@@ -4,14 +4,17 @@
  *
  */
 
-import { Button, Grid, RootRef, Zoom } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import RootRef from '@material-ui/core/RootRef';
+import Zoom from '@material-ui/core/Zoom';
 import AddNewBubbleItemModal from 'components/AddNewBubbleItemModal';
 import BubbleItem from 'components/BubbleItem';
 import Header from 'components/Header';
 import useItemsState from 'containers/App/useItemsState';
 import React from 'react';
 import { Item } from 'components/BubbleItem/types/Item';
-import { Add } from '@material-ui/icons';
+import Add from '@material-ui/icons/Add';
 import DragAndDrop from 'components/DragAndDrop';
 
 export const HomePage = ({  }: HomePageProps) => {

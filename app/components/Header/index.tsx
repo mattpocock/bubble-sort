@@ -7,8 +7,10 @@
 import React from 'react';
 // import styled from 'styled-components';
 
-import { AppBar, Toolbar, Typography, Icon } from '@material-ui/core';
-import { List } from '@material-ui/icons';
+import List from '@material-ui/icons/List';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 const Header = ({  }: HeaderProps) => {
   return (

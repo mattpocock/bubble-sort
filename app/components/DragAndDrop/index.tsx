@@ -8,7 +8,8 @@ import React from 'react';
 // import styled from 'styled-components';
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { Grid, RootRef } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import RootRef from '@material-ui/core/RootRef';
 
 function DragAndDrop<Data = any>({
   reorderId,
