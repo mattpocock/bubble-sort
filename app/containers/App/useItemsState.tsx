@@ -1,8 +1,9 @@
 import useReduxState from 'utils/hooks/useReduxState';
 import { Item } from 'components/BubbleItem/types/Item';
+import { useEffect, useState } from 'react';
 
-const useItemsState = () =>
-  useReduxState<State, Actions>({
+const useItemsState = () => {
+  const itemsState = useReduxState<State, Actions>({
     key: 'items',
     initialState: {
       items: [],
@@ -46,6 +47,29 @@ const useItemsState = () =>
     },
   });
 
+  const [initialCheckComplete, setInitialCheckComplete] = useState(false);
+
+  const itemsStateAsString = itemsState.state.items
+    .map(({ id, chips }) => `${id}${chips.map(chip => chip.id)}`)
+    .join('');
+
+  useEffect(() => {
+    if (!initialCheckComplete) {
+      const storedItems = localStorage.getItem(STORAGE_KEY);
+
+      if (storedItems) {
+        const parsedItems: Item[] = JSON.parse(storedItems);
+        itemsState.updateAllItems(parsedItems);
+      }
+      setInitialCheckComplete(true);
+    } else {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(itemsState.state.items));
+    }
+  }, [itemsStateAsString]);
+
+  return itemsState;
+};
+
 interface State {
   items: Item[];
   itemIdEditing: string | null;
@@ -63,3 +87,5 @@ interface Actions {
 }
 
 export default useItemsState;
+
+const STORAGE_KEY = 'ITEMS_STATE';
